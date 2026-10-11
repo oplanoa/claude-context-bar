@@ -1,6 +1,6 @@
 {
   "name": "context-bar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Displays reported context-window usage above the prompt with a progress bar, percentage, and token count.",
   "author": {
     "name": "oplanoa"
