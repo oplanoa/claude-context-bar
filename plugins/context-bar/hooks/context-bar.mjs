@@ -4,8 +4,8 @@
 const COMMAND = "context-bar";
 const STORE_KEY = "visible";
 const BAR_WIDTH = 12;
-const FILLED = "█";
-const EMPTY = "░";
+const FILLED = "▰";
+const EMPTY = "▱";
 
 let visible = true;
 let usage = null;

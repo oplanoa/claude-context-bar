@@ -16,7 +16,7 @@ describe('context-bar', () => {
     await $.session.start(start);
     const first = await $.ui.mount({ ...band, surface: "desktop" });
     expect(await first.find({ type: "Text", text: /25%/ })).toBeDefined();
-    expect(await first.find({ type: "Text", text: /50k/ })).toBeDefined();
+    expect(await first.find({ type: "Text", text: /▰+▱+/ })).toBeDefined();
     await first.unmount();
     await $.command.run(toggle);
     const hidden = await $.ui.mount({ ...band, surface: "desktop" });
