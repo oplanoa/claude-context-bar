@@ -1,7 +1,7 @@
 {
   "name": "context-bar",
-  "version": "0.1.1",
-  "description": "Displays reported context-window usage above the prompt with a progress bar, percentage, and token count.",
+  "version": "0.2.0",
+  "description": "Shows a full-width context progress bar and privacy-safe aggregated context categories above the prompt.",
   "author": {
     "name": "oplanoa"
   },

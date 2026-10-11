@@ -1,10 +1,10 @@
 # Context Bar
 
-A Claude Code mod that shows reported context-window usage above the prompt with a compact progress bar, percentage, and token count.
+A Claude Code mod that shows context-window usage above the prompt with a full-width progress bar and privacy-safe aggregate categories.
 
 ## What this shows
 
-The mod reads context usage reported by the active session and draws it in the `AbovePrompt` render site. Enter `/context-bar` to toggle the display.
+The first line is a full-width progress bar. Below it, context categories such as system prompt, messages, tools, skills, memory, free space, and compaction buffer are grouped into up to three rows. Enter `/context-bar` to toggle the display.
 
 ## Demo
 
@@ -12,7 +12,7 @@ Desktop rendering has not yet been manually captured.
 
 ## Development notes
 
-This plugin uses `$.session.usage()` to read context-window figures and `AbovePrompt` to draw the bar. Automated tests exercise the Desktop render surface, toggle, and turn refresh. Live rendering in the Desktop app remains unverified.
+This plugin uses `$.session.usage({ breakdown: "summary" })` and the `AbovePrompt` render site. Summary breakdown estimates locally and does not send token-count requests. Category names are mapped into a fixed set of aggregate labels; raw names and detail arrays are never rendered. Automated tests exercise the Desktop render surface, privacy-safe aggregation, toggle, and turn refresh. Live rendering in the Desktop app remains unverified.
 
 ## Run it
 

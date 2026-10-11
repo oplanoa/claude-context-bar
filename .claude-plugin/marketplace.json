@@ -10,7 +10,7 @@
     {
       "name": "context-bar",
       "source": "./plugins/context-bar",
-      "description": "Shows context-window usage above the prompt with a progress bar, percentage, and token count."
+      "description": "Shows a full-width context progress bar and privacy-safe aggregate context categories above the prompt."
     }
   ]
 }

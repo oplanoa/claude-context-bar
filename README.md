@@ -11,11 +11,11 @@ Claude Code plugin marketplace for `context-bar`, a mod that displays reported c
 
 ## What it shows
 
-A compact progress bar, used percentage, and used/total token count. Usage refreshes after each main-agent turn.
+A full-width progress bar on its own first line, followed by privacy-safe aggregate categories arranged in up to three rows. Usage refreshes after each main-agent turn.
 
 ## Verification
 
-The plugin passes `claude plugin validate --strict`; automated tests cover the Desktop render surface, toggle, and update after a turn. Live rendering in the Desktop app has not yet been manually verified.
+The plugin passes `claude plugin validate --strict`; automated tests cover Desktop rendering, category aggregation and privacy, toggle, and update after a turn. Live rendering in the Desktop app has not yet been manually verified.
 
 ## License
 
