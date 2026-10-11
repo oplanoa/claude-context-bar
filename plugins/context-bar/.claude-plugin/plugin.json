@@ -1,0 +1,9 @@
+{
+  "name": "context-bar",
+  "version": "0.1.0",
+  "description": "Displays reported context-window usage above the prompt with a progress bar, percentage, and token count.",
+  "author": {
+    "name": "oplanoa"
+  },
+  "license": "Apache-2.0"
+}

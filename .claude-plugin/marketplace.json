@@ -1,0 +1,16 @@
+{
+  "name": "claude-context-bar",
+  "owner": {
+    "name": "oplanoa"
+  },
+  "metadata": {
+    "description": "A standalone marketplace for the context-bar Claude Code mod."
+  },
+  "plugins": [
+    {
+      "name": "context-bar",
+      "source": "./plugins/context-bar",
+      "description": "Shows context-window usage above the prompt with a progress bar, percentage, and token count."
+    }
+  ]
+}
