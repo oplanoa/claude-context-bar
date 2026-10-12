@@ -25,6 +25,7 @@ describe('context-bar', () => {
     await $.session.start(start);
     const view = await $.ui.mount({ ...band, surface: 'desktop' });
     expect(await view.find({ type: 'Text', text: /^▰+▱+$/ })).toBeDefined();
+    expect(await view.find({ type: 'Text', text: /^▰+$/ })).toBeDefined();
     expect(await view.find({ type: 'Text', text: /System prompt|Messages|MCP tools|Other|Free space/ })).toBeDefined();
     expect(await view.find({ type: 'Text', text: /mcp__private_server|Secret skill|Secret memory/ })).toBeUndefined();
     await view.unmount();

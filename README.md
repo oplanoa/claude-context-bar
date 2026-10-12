@@ -11,7 +11,7 @@ Claude Code plugin marketplace for `context-bar`, a mod that displays reported c
 
 ## What it shows
 
-A full-width progress bar on its own first line, followed by privacy-safe aggregate categories arranged in up to three rows. Usage refreshes after each main-agent turn.
+A full-width progress bar on its own first line, followed by colored mini-charts for privacy-safe aggregate categories arranged in up to three rows. Usage refreshes after each main-agent turn.
 
 ## Verification
 

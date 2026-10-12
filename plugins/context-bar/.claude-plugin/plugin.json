@@ -1,7 +1,7 @@
 {
   "name": "context-bar",
-  "version": "0.2.0",
-  "description": "Shows a full-width context progress bar and privacy-safe aggregated context categories above the prompt.",
+  "version": "0.3.0",
+  "description": "Shows a full-width context bar and colored per-category mini-charts above the prompt.",
   "author": {
     "name": "oplanoa"
   },

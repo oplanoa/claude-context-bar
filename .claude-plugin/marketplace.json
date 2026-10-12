@@ -10,7 +10,7 @@
     {
       "name": "context-bar",
       "source": "./plugins/context-bar",
-      "description": "Shows a full-width context progress bar and privacy-safe aggregate context categories above the prompt."
+      "description": "Shows a full-width context bar and colored per-category mini-charts above the prompt."
     }
   ]
 }

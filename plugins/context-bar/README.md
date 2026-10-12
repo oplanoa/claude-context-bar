@@ -1,10 +1,10 @@
 # Context Bar
 
-A Claude Code mod that shows context-window usage above the prompt with a full-width progress bar and privacy-safe aggregate categories.
+A Claude Code mod that shows context-window usage above the prompt with a full-width progress bar and colored mini-charts per privacy-safe aggregate category.
 
 ## What this shows
 
-The first line is a full-width progress bar. Below it, context categories such as system prompt, messages, tools, skills, memory, free space, and compaction buffer are grouped into up to three rows. Enter `/context-bar` to toggle the display.
+The first line is a full-width progress bar. Below it, each aggregated category renders as a colored mini-bar scaled to the largest category, followed by its label, tokens, and share, packed into up to three rows. Enter `/context-bar` to toggle the display.
 
 ## Demo
 

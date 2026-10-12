@@ -5,6 +5,20 @@ const COMMAND = "context-bar";
 const STORE_KEY = "visible";
 const FILLED = "▰";
 const EMPTY = "▱";
+const CATEGORY_COLORS = {
+  "System prompt": "cyan",
+  Messages: "yellow",
+  "MCP tools": "blue",
+  Tools: "green",
+  Skills: "magenta",
+  Memory: "cyan",
+  Agents: "blue",
+  Commands: "yellow",
+  Other: "white",
+  "Free space": "gray",
+  "Compaction buffer": "red",
+  "Deferred tools": "gray",
+};
 const SAFE_CATEGORIES = {
   "System prompt": "System prompt",
   Messages: "Messages",
@@ -89,6 +103,7 @@ function aggregateCategories(categories, window) {
     label,
     tokens,
     percent: Math.round((tokens / window) * 100),
+    color: CATEGORY_COLORS[label] ?? "white",
   })).filter((item) => item.tokens > 0);
 }
 
@@ -103,6 +118,7 @@ function renderUsage(Box, Text, columns) {
     paddingX: 1,
     children: [Text({ color, bold: true, children: FILLED.repeat(filled) + EMPTY.repeat(barWidth - filled) })],
   });
+  const maxTokens = Math.max(1, ...usage.categories.map((item) => item.tokens));
   const rows = categoryRows(usage.categories, columns);
   const children = [bar];
   for (const row of rows) {
@@ -110,7 +126,13 @@ function renderUsage(Box, Text, columns) {
       flexDirection: "row",
       flexWrap: "wrap",
       paddingX: 1,
-      children: row.map((item) => Text({ dimColor: true, children: item.label + " " + short(item.tokens) + " (" + item.percent + "%)" })),
+      children: row.flatMap((item) => {
+        const width = Math.max(1, Math.min(10, Math.round((item.tokens / maxTokens) * 10)));
+        return [
+          Text({ color: item.color, bold: true, children: FILLED.repeat(width) }),
+          Text({ dimColor: true, children: " " + item.label + " " + short(item.tokens) + " (" + item.percent + "%)  " }),
+        ];
+      }),
     }));
   }
   return Box({ flexDirection: "column", width: "100%", children });
@@ -120,24 +142,24 @@ function categoryRows(categories, columns) {
   const rows = [[]];
   let used = 2;
   for (const item of categories) {
-    const label = item.label + " " + short(item.tokens) + " (" + item.percent + "%)";
-    const itemWidth = label.length + 2;
-    if (used + itemWidth > columns && rows.length < 3) {
+    const labelWidth = item.label.length + short(item.tokens).length + String(item.percent).length + 6;
+    const width = Math.min(columns, Math.max(1, Math.min(10, Math.round((item.tokens / Math.max(1, ...categories.map((entry) => entry.tokens))) * 10))) + labelWidth + 2);
+    if (used + width > columns && rows.length < 3) {
       rows.push([]);
       used = 2;
     }
     const row = rows[rows.length - 1];
-    if (used + itemWidth <= columns) {
+    if (used + width <= columns) {
       row.push(item);
-      used += itemWidth;
-      continue;
-    }
-    const other = row.find((entry) => entry.label === "Other");
-    if (other) {
-      other.tokens += item.tokens;
-      other.percent += item.percent;
+      used += width;
     } else {
-      row.push({ label: "Other", tokens: item.tokens, percent: item.percent });
+      const other = row.find((entry) => entry.label === "Other");
+      if (other) {
+        other.tokens += item.tokens;
+        other.percent += item.percent;
+      } else {
+        row.push({ ...item, label: "Other", color: CATEGORY_COLORS.Other });
+      }
     }
   }
   return rows.filter((row) => row.length > 0);
