@@ -109,7 +109,7 @@ function aggregateCategories(categories, window) {
 
 function renderUsage(Box, Text, columns) {
   const percent = usage.percent;
-  const barWidth = Math.max(1, columns - 2);
+  const barWidth = Math.max(1, Math.min(40, columns - 2));
   const filled = Math.round((percent / 100) * barWidth);
   const color = percent >= 90 ? "red" : percent >= 75 ? "magenta" : percent >= 50 ? "yellow" : "green";
   const bar = Box({
